@@ -1,16 +1,19 @@
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+
 interface InputProps {
   label: string
   placeholder?: string
   name: string
-  register: any
+//   register: any
   isErrored?: boolean
 }
 
-export const Input = ({placeholder, label, name, register}: InputProps) => {
+export const Input = ({placeholder, label, name}: InputProps) => {
   return (
-    <label id='label'>
-      {label}
-      <input {...register(name)} className="input" placeholder={placeholder && placeholder}/>
-    </label>
+    <>
+        <TextField placeholder={placeholder && placeholder} label={label} variant="outlined" />
+        <Button variant="contained">Contained</Button>
+    </>
   )
 }
