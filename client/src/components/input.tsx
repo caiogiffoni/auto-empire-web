@@ -13,7 +13,6 @@ export const Input = ({placeholder, label, name}: InputProps) => {
   return (
     <>
         <TextField placeholder={placeholder && placeholder} label={label} variant="outlined" />
-        <Button variant="contained">Contained</Button>
     </>
   )
 }
