@@ -1,11 +1,13 @@
 import ModalCreateEditAd from "./components/modal create-edit ad";
-import SuccessModal from "./components/modal succes"
+import ModalEditAddress from "./components/modal edit address";
+import ModalSuccess from "./components/modal succes"
 
 function App() {
   return (
     <div className="App">
-        <SuccessModal/>
+        <ModalSuccess/>
         <ModalCreateEditAd/>
+        <ModalEditAddress/>
     </div>
   );
 }

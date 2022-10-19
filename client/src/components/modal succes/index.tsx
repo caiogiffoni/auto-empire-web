@@ -85,7 +85,7 @@ function BootstrapDialogTitle(props: DialogTitleProps) {
   );
 }
 
-export default function SuccessModal() {
+export default function ModalSuccess() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -98,7 +98,7 @@ export default function SuccessModal() {
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Open Modal
+        Open Succes Modal
       </Button>
       <BootstrapDialog
         onClose={handleClose}
