@@ -7,7 +7,8 @@ import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import Button, { ButtonProps } from '@mui/material/Button';
+import { red, grey } from '@mui/material/colors';
 
 const BootstrapButton = styled(Button)({
     boxShadow: 'none',
@@ -85,7 +86,24 @@ function BootstrapDialogTitle(props: DialogTitleProps) {
   );
 }
 
-export default function SuccessModal() {
+// const GreyColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
+//     color: theme.palette.getContrastText(grey[500]),
+//     backgroundColor: grey[500],
+//     '&:hover': {
+//       backgroundColor: grey[700],
+//     },
+//   }));
+
+//   const RedColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
+//     color: theme.palette.getContrastText(red[500]),
+//     backgroundColor: red[500],
+//     '&:hover': {
+//       backgroundColor: red[700],
+//     },
+//   }));
+  
+
+export default function ModalCreateEditAd() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -98,7 +116,7 @@ export default function SuccessModal() {
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Open Modal
+        Open Create
       </Button>
       <BootstrapDialog
         onClose={handleClose}
@@ -106,16 +124,19 @@ export default function SuccessModal() {
         open={open}
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Sucesso!
+          Excluir anúncio
         </BootstrapDialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
-            Agora você poderá ver seus negócios crescendo em grande escala.
+            Tem certeza que deseja remover este anúncio?
           </Typography>
         </DialogContent>
         <DialogActions>
             <BootstrapButton onClick={handleClose} variant="contained" disableRipple>
-                Ir para o login
+                Cancelar
+            </BootstrapButton>
+            <BootstrapButton onClick={handleClose} variant="contained" disableRipple>
+                Sim, excluir anúncio
             </BootstrapButton>
         </DialogActions>
       </BootstrapDialog>

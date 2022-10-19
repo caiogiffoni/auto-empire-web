@@ -1,9 +1,11 @@
-import CustomizedDialogs from "./components/modal succes";
+import ModalCreateEditAd from "./components/modal create-edit ad";
+import SuccessModal from "./components/modal succes"
 
 function App() {
   return (
     <div className="App">
-        <CustomizedDialogs/>
+        <SuccessModal/>
+        <ModalCreateEditAd/>
     </div>
   );
 }
