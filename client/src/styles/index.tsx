@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   :root {
   	--body-font: 'Lexend';
+    --itens-font:'Inter', sans-serif;;
   	--brand1: #4529E6;
     --brand2: #5126EA;
     --brand3: #B0A6F0;
