@@ -7,15 +7,11 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import { ButtonStyle } from "../button";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import MotorShop from "../../assets/MotorsShop.png";
 import Line from "../../assets/Line.png";
-import { UserMenu } from "./style";
 
 const pages = ["Carros", "Motos", "Leilão"];
 const settings = ["Editar Perfil", "Editar endereço", "Minhas Compras", "Sair"];
@@ -133,44 +129,42 @@ const RegisterHeader = () => {
       </Container>
 
       <img src={Line} alt="line" style={{ margin: "none" }} />
-      <UserMenu>
-        <Container sx={{ width: "100%" }}>
-          <Toolbar sx={{ width: "100%" }}>
-            <Box
-              sx={{
-                flexGrow: 0,
-                width: "100%",
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "left",
-                alignItems: "center",
-                gap: "35px",
-              }}
+
+      <Container sx={{ width: "30%", display: { xs: "none", md: "flex" } }}>
+        <Toolbar sx={{ width: "100%" }}>
+          <Box
+            sx={{
+              flexGrow: 0,
+              width: "100%",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "left",
+              alignItems: "center",
+              gap: "35px",
+            }}
+          >
+            <ButtonStyle
+              variant="text"
+              textColor="#4529E6"
+              width="119px"
+              whiteSpace="noWrap"
             >
-              <ButtonStyle
-                variant="text"
-                textColor="#4529E6"
-                width="119px"
-                whiteSpace="noWrap"
-              >
-                Fazer Login
-              </ButtonStyle>
-              <ButtonStyle
-                variant="text"
-                backgroundColor="transparent"
-                textColor="#0B0D0D"
-                width="119px"
-                borderColor="#ADB5BD"
-              >
-                Cadastrar
-              </ButtonStyle>
-            </Box>
-          </Toolbar>
-        </Container>
-      </UserMenu>
+              Fazer Login
+            </ButtonStyle>
+            <ButtonStyle
+              variant="text"
+              backgroundColor="transparent"
+              textColor="#0B0D0D"
+              width="119px"
+              borderColor="#ADB5BD"
+            >
+              Cadastrar
+            </ButtonStyle>
+          </Box>
+        </Toolbar>
+      </Container>
     </AppBar>
   );
 };
-export default RegisterHeader;
 
-//backgroundColor: "#4529E6"
+export default RegisterHeader;
