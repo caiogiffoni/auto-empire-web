@@ -2,14 +2,14 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { DivButton, DivContent } from './styles';
 
 const BootstrapButton = styled(Button)({
+    alignSelf: 'center',
     boxShadow: 'none',
     textTransform: 'none',
     fontSize: 16,
@@ -108,16 +108,17 @@ export default function ModalSuccess() {
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
           Sucesso!
         </BootstrapDialogTitle>
-        <DialogContent dividers>
+        <DivContent dividers>
+            <h3>Sua conta foi criada com sucesso</h3>
           <Typography gutterBottom>
             Agora você poderá ver seus negócios crescendo em grande escala.
           </Typography>
-        </DialogContent>
-        <DialogActions>
+        </DivContent>
+        <DivButton>
             <BootstrapButton onClick={handleClose} variant="contained" disableRipple>
                 Ir para o login
             </BootstrapButton>
-        </DialogActions>
+        </DivButton>
       </BootstrapDialog>
     </div>
   );
