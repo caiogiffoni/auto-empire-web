@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import Button, { ButtonProps } from '@mui/material/Button';
 import { red, grey } from '@mui/material/colors';
 import { TextField } from '@mui/material';
+import { DivButton, DivButtonCenter, DivContent, Container } from './styles';
 
 const BootstrapButton = styled(Button)({
     boxShadow: 'none',
@@ -54,7 +55,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
   '& .MuiDialogActions-root': {
     padding: theme.spacing(1),
-  },
+  }
 }));
 
 export interface DialogTitleProps {
@@ -115,86 +116,82 @@ export default function ModalCreateAd() {
   };
 
   return (
-    <div>
+    <Container>
       <Button variant="outlined" onClick={handleClickOpen}>
         Open Create Ad Modal
       </Button>
       <BootstrapDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
-        open={open}
+        open={open} style={{maxWidth: 520}}
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
           Criar anúncio
         </BootstrapDialogTitle>
 
-        <DialogContent dividers>
+        <DivContent dividers>
             <Typography gutterBottom>Tipo de anúncio</Typography>
-            <DialogActions>
+            <DivButtonCenter>
                 <BootstrapButton onClick={handleClose} variant="contained" disableRipple>
                     Venda
                 </BootstrapButton>
                 <BootstrapButton onClick={handleClose} variant="contained" disableRipple>
                     Leilão
                 </BootstrapButton>
-            </DialogActions>
+            </DivButtonCenter>
 
-            <DialogActions>
-                <Typography gutterBottom>Informações do veículo</Typography>
-                <Typography gutterBottom>Título</Typography>
-                <TextField placeholder='ex: Mercedes Benz A200'/>
-            </DialogActions>
 
-            <DialogActions>
-                <Typography gutterBottom>Ano</Typography>
-                <TextField placeholder='2018'/>
-                <Typography gutterBottom>Quilometragem</Typography>
-                <TextField placeholder='0'/>
-                <Typography gutterBottom>Preço</Typography>
-                <TextField placeholder='50.000,00'/>
-            </DialogActions>
+            <Typography gutterBottom>Informações do veículo</Typography>
+            <Typography className='title' gutterBottom>Título</Typography>
+            <TextField className='textField' placeholder='ex: Mercedes Benz A200'/>
 
-            <DialogActions>
-                <Typography gutterBottom>Descrição</Typography>
-                <TextField placeholder='ex: Mercedes Benz A200ex: Mercedes Benz A200ex: Mercedes Benz A200ex: Mercedes Benz A200 '/>
-            </DialogActions>
 
-            <Typography gutterBottom>Tipo de veículo</Typography>
-            <DialogActions>
+            <div className='info'>
+                <div className='divisors'>
+                    <Typography className='title' gutterBottom>Ano</Typography>
+                    <TextField placeholder='2018'/>
+                </div>
+                <div className='divisors'>
+                    <Typography className='title' gutterBottom>Quilometragem</Typography>
+                    <TextField placeholder='0'/>
+                </div>
+                <div className='divisors' id='price'>
+                    <Typography className='title' gutterBottom>Preço</Typography>
+                    <TextField className='textField' placeholder='50.000,00'/>
+                </div>
+            </div>
+            
+            <Typography className='title' gutterBottom>Descrição</Typography>
+            <TextField className='textField' placeholder='ex: Mercedes Benz A200ex: Mercedes Benz A200ex: Mercedes Benz A200ex: Mercedes Benz A200 '/>
+
+            <Typography className='title' gutterBottom>Tipo de veículo</Typography>
+            <DivButtonCenter>
                 <BootstrapButton onClick={handleClose} variant="contained" disableRipple>
                     Carro
                 </BootstrapButton>
                 <BootstrapButton onClick={handleClose} variant="contained" disableRipple>
                     Moto
                 </BootstrapButton>
-            </DialogActions>
-            <Typography gutterBottom>Publicado</Typography>
-            <DialogActions>
-                <BootstrapButton onClick={handleClose} variant="contained" disableRipple>
-                    Sim
-                </BootstrapButton>
-                <BootstrapButton onClick={handleClose} variant="contained" disableRipple>
-                    Não
-                </BootstrapButton>
-            </DialogActions>
+            </DivButtonCenter>
 
-                <Typography gutterBottom>Imagem da capa</Typography>
-                <TextField placeholder='https://image.com'/>
-                <Typography gutterBottom>1ª Imagem da galeria</Typography>
-                <TextField placeholder='https://image.com'/>
-                <Typography gutterBottom>2ª Imagem da galeria</Typography>
-                <TextField placeholder='https://image.com'/>
-        </DialogContent>
+                <Typography className='title' gutterBottom>Imagem da capa</Typography>
+                <TextField className='textField' placeholder='https://image.com'/>
+                <Typography className='title' gutterBottom>1ª Imagem da galeria</Typography>
+                <TextField className='textField' placeholder='https://image.com'/>
+                <Typography className='title' gutterBottom>2ª Imagem da galeria</Typography>
+                <TextField className='textField' placeholder='https://image.com'/>
 
-        <DialogActions>
-            <BootstrapButton onClick={handleClose} variant="contained" disableRipple>
-                Excluir anúncio
+        </DivContent>
+
+        <DivButton>
+            <BootstrapButton className='btn' onClick={handleClose} variant="contained" disableRipple>
+                Cancelar
             </BootstrapButton>
-            <BootstrapButton onClick={handleClose} variant="contained" disableRipple>
-                Salvar alterações
+            <BootstrapButton className='btn' onClick={handleClose} variant="contained" disableRipple>
+                Criar anúncio
             </BootstrapButton>
-        </DialogActions>
+        </DivButton>
       </BootstrapDialog>
-    </div>
+    </Container>
   );
 }

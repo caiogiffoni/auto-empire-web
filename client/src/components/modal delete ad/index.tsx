@@ -117,7 +117,7 @@ export default function ModalDeleteAd() {
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Open Delete Modal
+        Open Delete Ad Modal
       </Button>
       <BootstrapDialog
         onClose={handleClose}
