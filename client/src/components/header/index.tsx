@@ -11,10 +11,8 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import MotorShop from "../../assets/MotorsShop.png";
 import Line from "../../assets/Line.png";
-import { UserMenu } from "./style";
 
 const pages = ["Carros", "Motos", "Leilão"];
 const settings = ["Editar Perfil", "Editar endereço", "Minhas Compras", "Sair"];
@@ -132,74 +130,74 @@ const Header = () => {
       </Container>
 
       <img src={Line} alt="line" style={{ margin: "none" }} />
-      <UserMenu>
-        <Container sx={{ width: "100%" }}>
-          <Toolbar sx={{ width: "100%" }}>
-            <Box
-              sx={{
-                flexGrow: 0,
-                width: "100%",
+
+      <Container sx={{ width: "30%", display: { xs: "none", md: "flex" } }}>
+        <Toolbar sx={{ width: "100%" }}>
+          <Box
+            sx={{
+              flexGrow: 0,
+              width: "100%",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "left",
+              alignItems: "center",
+            }}
+          >
+            <Tooltip title="Open settings">
+              <IconButton
+                onClick={handleOpenUserMenu}
+                sx={{ p: 0, marginRight: "8px" }}
+              >
+                <Avatar
+                  alt="Iemy Sharp"
+                  src="/static/images/avatar/2.jpg"
+                  sx={{ backgroundColor: "#4529E6" }}
+                />
+              </IconButton>
+            </Tooltip>
+            <span
+              style={{
+                color: "black",
                 display: "flex",
-                flexDirection: "row",
-                justifyContent: "left",
-                alignItems: "center",
+                textAlign: "start",
+                fontFamily: "Inter",
+                fontStyle: "normal",
+                fontWeight: 400,
+                fontSize: "16px",
+                lineHeight: "28px",
               }}
             >
-              <Tooltip title="Open settings">
-                <IconButton
-                  onClick={handleOpenUserMenu}
-                  sx={{ p: 0, marginRight: "8px" }}
-                >
-                  <Avatar
-                    alt="Iemy Sharp"
-                    src="/static/images/avatar/2.jpg"
-                    sx={{ backgroundColor: "#4529E6" }}
-                  />
-                </IconButton>
-              </Tooltip>
-              <span
-                style={{
-                  color: "black",
-                  display: "flex",
-                  textAlign: "start",
-                  fontFamily: "Inter",
-                  fontStyle: "normal",
-                  fontWeight: 400,
-                  fontSize: "16px",
-                  lineHeight: "28px",
-                }}
-              >
-                Username
-              </span>
-              <Menu
-                elevation={0}
-                className="menu"
-                sx={{ mt: "45px" }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "center",
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
-            </Box>
-          </Toolbar>
-        </Container>
-      </UserMenu>
+              Username
+            </span>
+            <Menu
+              elevation={0}
+              className="menu"
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "center",
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {settings.map((setting) => (
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+        </Toolbar>
+      </Container>
     </AppBar>
   );
 };
+
 export default Header;
