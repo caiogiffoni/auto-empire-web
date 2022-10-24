@@ -2,15 +2,12 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
-import Button, { ButtonProps } from '@mui/material/Button';
-import { red, grey } from '@mui/material/colors';
+import Button from '@mui/material/Button';
 import { TextField } from '@mui/material';
-import { DivButton, DivContent, Container } from './styles';
+import { DivButton, DivButtonCenter, DivContent } from './styles';
 
 const BootstrapButton = styled(Button)({
     boxShadow: 'none',
@@ -88,15 +85,7 @@ function BootstrapDialogTitle(props: DialogTitleProps) {
   );
 }
 
-// const GreyColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
-//     color: theme.palette.getContrastText(grey[500]),
-//     backgroundColor: grey[500],
-//     '&:hover': {
-//       backgroundColor: grey[700],
-//     },
-//   }));
-
-export default function ModalEditProfile() {
+export default function ModalCreateAd() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -107,9 +96,9 @@ export default function ModalEditProfile() {
   };
 
   return (
-    <Container>
+    <div>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Open Edit Profile Modal
+        Open Create Ad Modal
       </Button>
       <BootstrapDialog
         onClose={handleClose}
@@ -117,28 +106,63 @@ export default function ModalEditProfile() {
         open={open}
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Editar perfil
+          Criar anúncio
         </BootstrapDialogTitle>
 
         <DivContent dividers>
-            <Typography gutterBottom>Informações pessoais</Typography>
-            <Typography className='title' gutterBottom>Nome</Typography>
-            <TextField className='textField'/>
+            <Typography gutterBottom>Tipo de anúncio</Typography>
+            <DivButtonCenter>
+                <BootstrapButton onClick={handleClose} variant="contained" disableRipple>
+                    Venda
+                </BootstrapButton>
+                <BootstrapButton onClick={handleClose} variant="contained" disableRipple>
+                    Leilão
+                </BootstrapButton>
+            </DivButtonCenter>
 
-            <Typography className='title' gutterBottom>Email</Typography>
-            <TextField className='textField'/>
 
-            <Typography className='title' gutterBottom>CPF</Typography>
-            <TextField className='textField'/>
+            <Typography gutterBottom>Informações do veículo</Typography>
+            <Typography className='title' gutterBottom>Título</Typography>
+            <TextField className='textField' placeholder='ex: Mercedes Benz A200'/>
 
-            <Typography className='title' gutterBottom>Celular</Typography>
-            <TextField className='textField'/>
 
-            <Typography className='title' gutterBottom>Data de nascimento</Typography>
-            <TextField className='textField'/>
+            <div className='info'>
+                <div className='divisors'>
+                    <Typography className='title' gutterBottom>Ano</Typography>
+                    <TextField placeholder='2018'/>
+                </div>
+                <div className='divisors'>
+                    <Typography className='title' gutterBottom>Quilometragem</Typography>
+                    <TextField placeholder='0'/>
+                </div>
+                <div className='divisors' id='price'>
+                    <Typography className='title' gutterBottom>Preço</Typography>
+                    <TextField className='textField' placeholder='50.000,00'/>
+                </div>
+            </div>
             
             <Typography className='title' gutterBottom>Descrição</Typography>
             <TextField className='textField' placeholder='ex: Mercedes Benz A200ex: Mercedes Benz A200ex: Mercedes Benz A200ex: Mercedes Benz A200 '/>
+
+            <Typography className='title' gutterBottom>Tipo de veículo</Typography>
+            <DivButtonCenter>
+                <BootstrapButton onClick={handleClose} variant="contained" disableRipple>
+                    Carro
+                </BootstrapButton>
+                <BootstrapButton onClick={handleClose} variant="contained" disableRipple>
+                    Moto
+                </BootstrapButton>
+            </DivButtonCenter>
+
+                <Typography className='title' gutterBottom>Imagem da capa</Typography>
+                <TextField className='textField' placeholder='https://image.com'/>
+                <Typography className='title' gutterBottom>1ª Imagem da galeria</Typography>
+                <TextField className='textField' placeholder='https://image.com'/>
+                <Typography className='title' gutterBottom>2ª Imagem da galeria</Typography>
+                <TextField className='textField' placeholder='https://image.com'/>
+
+                <button className='button'>Adicionar campo para imagem da galeria</button>
+
         </DivContent>
 
         <DivButton>
@@ -146,10 +170,10 @@ export default function ModalEditProfile() {
                 Cancelar
             </BootstrapButton>
             <BootstrapButton className='btn' onClick={handleClose} variant="contained" disableRipple>
-                Salvar alterações
+                Criar anúncio
             </BootstrapButton>
         </DivButton>
       </BootstrapDialog>
-    </Container>
+    </div>
   );
 }

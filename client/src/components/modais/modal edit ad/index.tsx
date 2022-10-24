@@ -2,15 +2,12 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
-import Button, { ButtonProps } from '@mui/material/Button';
-import { red, grey } from '@mui/material/colors';
+import Button from '@mui/material/Button';
 import { TextField } from '@mui/material';
-import { DivButton, DivButtonCenter, DivContent, Container } from './styles';
+import { DivButton, DivButtonCenter, DivContent } from './styles';
 
 const BootstrapButton = styled(Button)({
     boxShadow: 'none',
@@ -88,24 +85,7 @@ function BootstrapDialogTitle(props: DialogTitleProps) {
   );
 }
 
-// const GreyColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
-//     color: theme.palette.getContrastText(grey[500]),
-//     backgroundColor: grey[500],
-//     '&:hover': {
-//       backgroundColor: grey[700],
-//     },
-//   }));
-
-//   const RedColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
-//     color: theme.palette.getContrastText(red[500]),
-//     backgroundColor: red[500],
-//     '&:hover': {
-//       backgroundColor: red[700],
-//     },
-//   }));
-  
-
-export default function ModalCreateAd() {
+export default function ModalEditAd() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -118,7 +98,7 @@ export default function ModalCreateAd() {
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Open Create Ad Modal
+        Open Edit Ad Modal
       </Button>
       <BootstrapDialog
         onClose={handleClose}
@@ -126,7 +106,7 @@ export default function ModalCreateAd() {
         open={open}
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Criar anúncio
+          Editar anúncio
         </BootstrapDialogTitle>
 
         <DivContent dividers>
@@ -174,6 +154,16 @@ export default function ModalCreateAd() {
                 </BootstrapButton>
             </DivButtonCenter>
 
+            <Typography className='title' gutterBottom>Publicado</Typography>
+            <DivButtonCenter>
+                <BootstrapButton onClick={handleClose} variant="contained" disableRipple>
+                    Sim
+                </BootstrapButton>
+                <BootstrapButton onClick={handleClose} variant="contained" disableRipple>
+                    Não
+                </BootstrapButton>
+            </DivButtonCenter>
+
                 <Typography className='title' gutterBottom>Imagem da capa</Typography>
                 <TextField className='textField' placeholder='https://image.com'/>
                 <Typography className='title' gutterBottom>1ª Imagem da galeria</Typography>
@@ -187,10 +177,10 @@ export default function ModalCreateAd() {
 
         <DivButton>
             <BootstrapButton className='btn' onClick={handleClose} variant="contained" disableRipple>
-                Cancelar
+                Excluir anúncio
             </BootstrapButton>
             <BootstrapButton className='btn' onClick={handleClose} variant="contained" disableRipple>
-                Criar anúncio
+                Salvar alterações
             </BootstrapButton>
         </DivButton>
       </BootstrapDialog>

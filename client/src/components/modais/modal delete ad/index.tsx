@@ -2,15 +2,11 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
-import Button, { ButtonProps } from '@mui/material/Button';
-import { red, grey } from '@mui/material/colors';
-import { TextField } from '@mui/material';
-import { DivButton, DivContent, Container } from './styles';
+import Button from '@mui/material/Button';
+import { DivButton, DivContent } from './styles';
 
 const BootstrapButton = styled(Button)({
     boxShadow: 'none',
@@ -55,7 +51,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
   '& .MuiDialogActions-root': {
     padding: theme.spacing(1),
-  }
+  },
 }));
 
 export interface DialogTitleProps {
@@ -88,24 +84,7 @@ function BootstrapDialogTitle(props: DialogTitleProps) {
   );
 }
 
-// const GreyColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
-//     color: theme.palette.getContrastText(grey[500]),
-//     backgroundColor: grey[500],
-//     '&:hover': {
-//       backgroundColor: grey[700],
-//     },
-//   }));
-
-//   const RedColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
-//     color: theme.palette.getContrastText(red[500]),
-//     backgroundColor: red[500],
-//     '&:hover': {
-//       backgroundColor: red[700],
-//     },
-//   }));
-  
-
-export default function ModalEditAddress() {
+export default function ModalDeleteAd() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -118,7 +97,7 @@ export default function ModalEditAddress() {
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Open Edit Address Modal
+        Open Delete Ad Modal
       </Button>
       <BootstrapDialog
         onClose={handleClose}
@@ -126,49 +105,21 @@ export default function ModalEditAddress() {
         open={open}
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Editar endereço
+          Excluir anúncio
         </BootstrapDialogTitle>
-
-        <DivContent dividers>
-
-            <Typography gutterBottom>Informações de endereço</Typography>
-            <Typography className='title' gutterBottom>CEP</Typography>
-            <TextField className='textField' placeholder='89888.888'/>
-
-
-            <div className='info'>
-                <div className='divisors'>
-                    <Typography className='title' gutterBottom>Estado</Typography>
-                    <TextField placeholder='Paraná'/>
-                </div>
-                <div className='divisors'>
-                    <Typography className='title' gutterBottom>Cidade</Typography>
-                    <TextField placeholder='Curitiba'/>
-                </div>
-            </div>
-
-            <Typography className='title' gutterBottom>Rua</Typography>
-            <TextField className='textField' placeholder='Rua do paraná'/>
-
-            <div className='info'>
-                <div className='divisors'>
-                    <Typography className='title' gutterBottom>Número</Typography>
-                    <TextField placeholder='1029'/>
-                </div>
-                <div className='divisors'>
-                    <Typography className='title' gutterBottom>Complemento</Typography>
-                    <TextField placeholder='Apart 12'/>
-                </div>
-            </div>
-
+        <DivContent>
+          <Typography gutterBottom>
+            <h4>Tem certeza que deseja remover este anúncio?</h4>
+                Essa ação não pode ser desfeita, isso excluirá permanentamente sua conta e removerá seus dados
+                de nossos servidores.
+          </Typography>
         </DivContent>
-
         <DivButton>
             <BootstrapButton className='btn' onClick={handleClose} variant="contained" disableRipple>
-                Excluir anúncio
+                Cancelar
             </BootstrapButton>
             <BootstrapButton className='btn' onClick={handleClose} variant="contained" disableRipple>
-                Salvar alterações
+                Sim, excluir anúncio
             </BootstrapButton>
         </DivButton>
       </BootstrapDialog>

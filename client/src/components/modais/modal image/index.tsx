@@ -69,7 +69,7 @@ export default function ModalImage() {
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
           Imagem do veículo
         </BootstrapDialogTitle>
-        <DialogContent dividers>
+        <DialogContent>
             <img width='350px' src={'https://s2.glbimg.com/bS0C9x8vNjm95NEGh4xxW-ZGp44=/0x0:620x413/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_cf9d035bf26b4646b105bd958f32089d/internal_photos/bs/2020/e/9/b7AvAHSfiItLIivXkkRw/2019-03-12-201098-xc90-t8-r-design.jpg'} alt="carro"/>
         </DialogContent>
       </BootstrapDialog>

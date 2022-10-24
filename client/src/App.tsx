@@ -1,10 +1,10 @@
-import ModalDeleteAd from "./components/modal delete ad";
-import ModalImage from "./components/modal image";
-import ModalSuccess from "./components/modal succes"
-import ModalCreateAd from "./components/modal create ad";
-import ModalEditAd from "./components/modal edit ad";
-import ModalEditProfile from "./components/modal edit profile";
-import ModalEditAddress from "./components/modal edit address";
+import ModalDeleteAd from "./components/modais/modal delete ad";
+import ModalImage from "./components/modais/modal image";
+import ModalSuccess from "./components/modais/modal succes"
+import ModalCreateAd from "./components/modais/modal create ad";
+import ModalEditAd from "./components/modais/modal edit ad";
+import ModalEditProfile from "./components/modais/modal edit profile";
+import ModalEditAddress from "./components/modais/modal edit address";
 
 function App() {
   return (
