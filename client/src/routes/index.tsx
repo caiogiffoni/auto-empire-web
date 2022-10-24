@@ -1,8 +1,4 @@
+export const Routes = () => {
+  return <></>;
+};
 
-
-  export const Routes =()=>{
-    return (
-      <>
-      </>
-    );
-  }

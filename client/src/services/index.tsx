@@ -1,8 +1,4 @@
-
-
-  export const Services =()=>{
-    return (
-      <>
-      </>
-    );
-  }
+export const Services = () => {
+    return <></>;
+  };
+  

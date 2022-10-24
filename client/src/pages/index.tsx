@@ -1,9 +1,8 @@
-import Header from "../components/header";
+
+import RegisterHeader from "../components/registerHeader";
+
+export const Pages = () => {
+  return <RegisterHeader />;
+};
   
-  export const Pages =()=>{
-    return (
-      <Header/>
-      
-    );
-  }
   
