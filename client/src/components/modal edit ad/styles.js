@@ -4,19 +4,6 @@ export const Container = styled.div`
 
 `
 
-export const DivButton = styled.button`
-    display: flex;
-    justify-content: space-between;
-    border: none;
-    padding: 20px 20px 20px 20px;
-    background-color: white;
-
-    .btn {
-        width: 48%;
-        height: 48px;
-    }
-`
-
 export const DivContent = styled.div`
     padding: 20px 20px;
     max-width: 480px;
@@ -59,6 +46,19 @@ export const DivContent = styled.div`
             min-width: 100px;
             max-width: 31%;
         }
+    }
+`
+
+export const DivButton = styled.button`
+    display: flex;
+    justify-content: space-between;
+    border: none;
+    padding: 20px 20px 20px 20px;
+    background-color: white;
+
+    .btn {
+        width: 48%;
+        height: 48px;
     }
 `
 

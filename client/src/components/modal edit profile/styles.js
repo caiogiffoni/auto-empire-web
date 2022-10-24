@@ -1,5 +1,21 @@
 import styled from 'styled-components'
 
+export const Container = styled.div`
+
+`
+
+export const DivContent = styled.div`
+    padding: 20px 20px;
+
+    .textField, .title {
+        width: 100%;
+    }
+
+    .title {
+        margin-top: 20px;
+    }
+`
+
 export const DivButton = styled.button`
     display: flex;
     justify-content: right;
@@ -14,8 +30,4 @@ export const DivButton = styled.button`
     .btn + .btn {
         margin-left: 15px;
     }
-`
-
-export const DivContent = styled.div`
-    padding: 20px 20px;
 `
