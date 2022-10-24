@@ -6,17 +6,13 @@ export const Container = styled.div`
 
 export const DivButton = styled.button`
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
     border: none;
     padding: 20px 20px 20px 20px;
     background-color: white;
 
-    .btn + .btn {
-        margin-left: 15px;
-    }
-
     .btn {
-        flex-wrap: nowrap;
+        width: 48%;
         height: 48px;
     }
 `

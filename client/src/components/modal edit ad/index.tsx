@@ -105,7 +105,7 @@ function BootstrapDialogTitle(props: DialogTitleProps) {
 //   }));
   
 
-export default function ModalCreateAd() {
+export default function ModalEditAd() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -118,7 +118,7 @@ export default function ModalCreateAd() {
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Open Create Ad Modal
+        Open Edit Ad Modal
       </Button>
       <BootstrapDialog
         onClose={handleClose}
@@ -126,7 +126,7 @@ export default function ModalCreateAd() {
         open={open}
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Criar anúncio
+          Editar anúncio
         </BootstrapDialogTitle>
 
         <DivContent dividers>
@@ -174,6 +174,16 @@ export default function ModalCreateAd() {
                 </BootstrapButton>
             </DivButtonCenter>
 
+            <Typography className='title' gutterBottom>Publicado</Typography>
+            <DivButtonCenter>
+                <BootstrapButton onClick={handleClose} variant="contained" disableRipple>
+                    Sim
+                </BootstrapButton>
+                <BootstrapButton onClick={handleClose} variant="contained" disableRipple>
+                    Não
+                </BootstrapButton>
+            </DivButtonCenter>
+
                 <Typography className='title' gutterBottom>Imagem da capa</Typography>
                 <TextField className='textField' placeholder='https://image.com'/>
                 <Typography className='title' gutterBottom>1ª Imagem da galeria</Typography>
@@ -187,10 +197,10 @@ export default function ModalCreateAd() {
 
         <DivButton>
             <BootstrapButton className='btn' onClick={handleClose} variant="contained" disableRipple>
-                Cancelar
+                Excluir anúncio
             </BootstrapButton>
             <BootstrapButton className='btn' onClick={handleClose} variant="contained" disableRipple>
-                Criar anúncio
+                Salvar alterações
             </BootstrapButton>
         </DivButton>
       </BootstrapDialog>
