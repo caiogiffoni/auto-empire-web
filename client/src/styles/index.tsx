@@ -1,9 +1,9 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   :root {
   	--body-font: 'Lexend';
-    --itens-font:'Inter', sans-serif;;
+    --itens-font:'Inter', sans-serif;
   	--brand1: #4529E6;
     --brand2: #5126EA;
     --brand3: #B0A6F0;
@@ -57,13 +57,20 @@ const GlobalStyle = createGlobalStyle`
    
    button {
         cursor: pointer;
-  }
+        font-family: var(--itens-font);
+        font-weight: var(--body-1-600);
+        font-size: 16;
+        line-height: 1.5;
+    }
 
+    h3 {
+        margin-top: 0px;
+    }
     
   }
 
    body{
-    font-family: 'Lexend' !important; 
+        font-family: 'Lexend' !important; 
 	  background-color: #fff;
 	  line-height: 30px;
 	  padding: 0;
