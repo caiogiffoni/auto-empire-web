@@ -15,7 +15,7 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    command: bash -c "yarn prisma migrate deploy && yarn dev"  
+    command: bash -c "yarn prisma db push --schema=./src/prisma/schema.prisma && yarn dev"  
     volumes:
       - .:/app
 
