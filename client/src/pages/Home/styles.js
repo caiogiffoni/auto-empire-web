@@ -1,5 +1,14 @@
 import styled from 'styled-components'
 
+export const Container = styled.div`
+    h2 {
+        margin-left: 30px;
+        margin-top: 70px;
+        font-family: var(--itens-font);
+    }
+
+`
+
 export const Banner = styled.div`
     background: var(--brand2);
     display: flex;
@@ -45,5 +54,18 @@ export const DivButtons = styled.div`
         button + button {
             margin-left: 20px;
         }
+    }
+`
+
+export const Carousel = styled.ul `
+    margin: 40px 20px;
+    padding: 0px;
+    display: flex;
+    width: 100vw;
+    overflow: scroll;
+    scroll-snap-type: x mandatory;
+
+    ::-webkit-scrollbar {
+        width: 0px;
     }
 `
