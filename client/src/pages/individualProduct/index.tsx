@@ -45,6 +45,8 @@ const user = {
   last_name: "Leão",
 };
 
+const widthCard = { xs: "300px", sm: "440px", md: "440px", lg: "752px" };
+
 export const IndProd = () => {
   return (
     <Box
@@ -61,28 +63,35 @@ export const IndProd = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          flexWrap: "wrap",
-          maxHeight: "1878px",
+          flexWrap: { md: "wrap", lg: "wrap" },
+          maxHeight: { md: "3300px", lg: "1878px" },
         }}
       >
         <Box
           sx={{
             height: "355px",
-            width: "752px",
+            width: widthCard,
             backgroundColor: "#FDFDFD",
             mt: "30px",
             borderRadius: "4px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            order: "1",
           }}
         >
-          <img src={api.car} alt="car" height="253px" width="441px" />
+          <Box
+            sx={{
+              width: "441px",
+            }}
+          >
+            <img src={api.car} alt="car" height="100%" width="100%" />
+          </Box>
         </Box>
         <Box
           sx={{
             height: "240px",
-            width: "752px",
+            width: widthCard,
             backgroundColor: "#FDFDFD",
             mt: "30px",
             borderRadius: "4px",
@@ -93,6 +102,7 @@ export const IndProd = () => {
             gap: "8px",
             p: "44px 44px",
             boxSizing: "border-box",
+            order: "2",
           }}
         >
           <Typography
@@ -176,8 +186,8 @@ export const IndProd = () => {
         </Box>
         <Box
           sx={{
-            width: "751px",
-            height: "213px",
+            width: widthCard,
+            height: { md: "300px", lg: "213px" },
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -188,6 +198,7 @@ export const IndProd = () => {
             boxSizing: "border-box",
             mt: "30px",
             borderRadius: "4px",
+            order: "3",
           }}
         >
           <Typography
@@ -213,7 +224,7 @@ export const IndProd = () => {
         </Box>
         <Box
           sx={{
-            width: "751px",
+            width: widthCard,
             minHeight: "20px",
             display: "flex",
             flexDirection: "column",
@@ -223,6 +234,7 @@ export const IndProd = () => {
             boxSizing: "border-box",
             mt: "30px",
             borderRadius: "4px",
+            order: "6",
           }}
         >
           <Typography
@@ -248,7 +260,7 @@ export const IndProd = () => {
         </Box>
         <Box
           sx={{
-            width: "751px",
+            width: widthCard,
             minHeight: "20px",
             display: "flex",
             flexDirection: "column",
@@ -258,6 +270,7 @@ export const IndProd = () => {
             boxSizing: "border-box",
             mt: "30px",
             borderRadius: "4px",
+            order: "7",
           }}
         >
           <Box
@@ -292,10 +305,13 @@ export const IndProd = () => {
               endAdornment: (
                 <Box
                   sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flenx-end",
-                    flexGrow: "1",
+                    display: {
+                      xs: "none",
+                      sm: "none",
+                      md: "none",
+                      lg: "block",
+                      xl: "block",
+                    },
                   }}
                 >
                   <ButtonStyle>Comentar</ButtonStyle>
@@ -305,8 +321,23 @@ export const IndProd = () => {
           />
           <Box
             sx={{
+              display: {
+                xs: "block",
+                sm: "block",
+                md: "block",
+                lg: "none",
+                xl: "none",
+              },
+            }}
+          >
+            <ButtonStyle>Comentar</ButtonStyle>
+          </Box>
+
+          <Box
+            sx={{
               mt: "15px",
               display: "flex",
+              flexWrap: "wrap",
               gap: "15px",
             }}
           >
@@ -377,7 +408,7 @@ export const IndProd = () => {
                 sx={{
                   fontFamily: "Inter",
                   fontWeight: "500",
-                  fontSize: "12px",
+                  fontSize: { xs: "11px", sm: "12px" },
                   color: "#868E96",
                 }}
               >
@@ -388,7 +419,7 @@ export const IndProd = () => {
         </Box>
         <Box
           sx={{
-            width: "440px",
+            width: { xs: "300px", sm: "440px" },
             height: "377px",
             display: "flex",
             flexDirection: "column",
@@ -399,6 +430,7 @@ export const IndProd = () => {
             boxSizing: "border-box",
             mt: "30px",
             borderRadius: "4px",
+            order: { xs: "3", sm: "3", md: "3", lg: "8", xl: "8" },
           }}
         >
           <Typography
@@ -424,8 +456,8 @@ export const IndProd = () => {
               api.photos.map((photo) => (
                 <Box
                   sx={{
-                    width: "108px",
-                    heigh: "108px",
+                    width: { xs: "90px", md: "108px" },
+                    heigh: { xs: "90px", md: "108px" },
                     backgroundColor: "#E9ECEF",
                     display: "flex",
                     alignItems: "center",
@@ -439,7 +471,7 @@ export const IndProd = () => {
         </Box>
         <Box
           sx={{
-            width: "440px",
+            width: { xs: "300px", sm: "440px" },
             height: "426px",
             backgroundColor: "#FDFDFD",
             borderRadius: "4px",
@@ -450,6 +482,7 @@ export const IndProd = () => {
             alignItems: "center",
             p: "20px 44px",
             boxSizing: "border-box",
+            order: { xs: "4", sm: "4", md: "4", lg: "9", xl: "9" },
           }}
         >
           <Avatar
