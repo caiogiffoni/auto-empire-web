@@ -4,6 +4,8 @@ import RegisterHeader from "../../components/registerHeader";
 import { Banner, Carousel, Container, DivButtons } from "./styles";
 
 export const Home = () => {
+
+
   return (
     <Container>
         <RegisterHeader/>
@@ -25,6 +27,9 @@ export const Home = () => {
             <CardAuto/>
             <CardAuto/>
         </Carousel>
+        <div>
+            <button></button>
+        </div>
         <h2>Motos</h2>
         <Carousel>
             <CardAuto/>
