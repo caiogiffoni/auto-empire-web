@@ -1,20 +1,20 @@
 import express from "express";
-import { appRoutes } from "./routes";
+import { PrismaClient } from "@prisma/client";
 import { errorMiddleware } from "./middlewares/error.middleware";
 import { Request, Response } from "express";
+import userRoute from "./routes/UserRoutes";
+import auctionRoute from "./routes/AuctionRoutes";
+import galleryRoute from "./routes/GalleryRoutes";
+import vehicleRoute from "./routes/VehicleRoutes";
 
+const prisma = new PrismaClient();
 const app = express();
 
 app.use(express.json());
 
-appRoutes(app);
-
-app.get("/", (req: Request, res: Response) => {
-  res.status(200).json({
-    message: "Hello World",
-  });
-});
-
-app.use(errorMiddleware);
+app.use("/users", userRoute);
+app.use("/auction", auctionRoute);
+app.use("/gallery", galleryRoute);
+app.use("/vehicle", vehicleRoute);
 
 app.listen(3000);

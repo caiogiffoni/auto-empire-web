@@ -18,7 +18,7 @@ model User {
   first_name    String
   last_name     String
   cpf           String
-  birthdate     DateTime
+  birthdate     String
   is_admin      Boolean
   vehicles      Vehicle[]
   comments      Comment[]
@@ -30,7 +30,7 @@ model Vehicle {
   photo         String      
   name          String      
   description   String
-  yeasr         Int
+  years         Int
   km            Int
   price         Float
   createdAt     DateTime  @default(now())
