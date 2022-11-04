@@ -70,7 +70,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
    body{
-        font-family: 'Lexend' !important; 
+    font-family: 'Lexend' !important; 
 	  background-color: #fff;
 	  line-height: 30px;
 	  padding: 0;

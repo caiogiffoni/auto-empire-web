@@ -20,20 +20,23 @@ interface IUserProps {
 interface UserProviderData {
   user: IUser[];
   createUser: (user: IUser) => void;
-  listUser: (user: IUser) => void;
+  listUser: ()=> void;
   updateUser: (user: IUser) => void;
   deleteUser: (user: IUser) => void;
 }
 
-const UserContext = createContext<UserProviderData>({} as UserProviderData);
+export const UserContext = createContext<UserProviderData>(
+  {} as UserProviderData
+);
 
 const UserProvider = ({ children }: IUserProps) => {
   const [user, setUsers] = useState<IUser[]>([]);
 
-  const listUser = () => {
-    api.get("users/").then((response) => {
+  const listUser = async () => {
+    await api.get("users/").then((response) => {
       setUsers(response.data);
     });
+
   };
 
   const createUser = () => {};
