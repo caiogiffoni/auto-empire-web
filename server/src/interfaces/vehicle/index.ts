@@ -1,8 +1,10 @@
 export interface IVehicle {
   id: string;
   photo: string;
+  name: string;
   description: string;
-  yeasr: number;
+  year: number;
+  price: number;
   km: number;
   createdAt: Date;
   updatedAt: Date;
