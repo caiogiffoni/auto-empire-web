@@ -4,18 +4,12 @@ import car from "../../assets/car.png";
 import { Avatar, Button, TextField, Typography } from "@mui/material";
 import { ButtonStyle } from "../../components/button";
 import { CommentCard } from "../../components/comments";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import api from "../../services";
 
-// apenas para exemplificar resposta api
-const api = {
-  title: "Mercedes Benz A 200 CGI ADVANCE SEDAN Mercedes Benz A 200 ",
-  car,
-  description:
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  firstName: "Samuel",
-  lastName: "Leão",
-  km: 0,
-  year: 2013,
-  price: 13585.85,
+// apenas para exemplificar resposta apix
+const apix = {
   photos: [car, car, car, car, car, car],
 };
 
@@ -40,14 +34,68 @@ const comments = [
   },
 ];
 
-const user = {
-  first_name: "Samuel",
-  last_name: "Leão",
-};
+interface IUser {
+  id: string;
+  email: string;
+  username: string;
+  first_name: string;
+  last_name: string;
+  cpf: string;
+  birthdate: Date;
+  is_admin: boolean;
+}
 
-const widthCard = { xs: "300px", sm: "440px", md: "440px", lg: "752px" };
+interface IGallery {
+  id: string;
+  photo: string;
+  vehicle_id: string;
+}
+
+interface IComment {
+  id: string;
+  is_active: boolean;
+  comment_text: string;
+  created_at: Date;
+  updated_at: Date;
+  user_id: string;
+  vehicle_id: string;
+  user: IUser;
+}
+
+interface IParams {
+  vehicleId: string;
+}
+
+interface IVehicle {
+  id: string;
+  photo: string;
+  description: string;
+  year: number;
+  price: number;
+  name: string;
+  km: number;
+  createdAt: Date;
+  updatedAt: Date;
+  is_active: Boolean;
+  user_id: string;
+  user: IUser;
+  gallery: IGallery[];
+  comments: IComment[];
+}
 
 export const IndProd = () => {
+  const widthCard = { xs: "300px", sm: "440px", md: "440px", lg: "752px" };
+  let { vehicleId } = useParams<IParams>();
+
+  const [vehicle, setVehicle] = useState<IVehicle>();
+
+  useEffect(() => {
+    api
+      .get(`vehicle/${vehicleId}`)
+      .then((res) => setVehicle(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <Box
       sx={{
@@ -65,6 +113,7 @@ export const IndProd = () => {
           alignItems: "center",
           flexWrap: { md: "wrap", lg: "wrap" },
           maxHeight: { md: "3300px", lg: "1878px" },
+          pb: "25px",
         }}
       >
         <Box
@@ -85,7 +134,7 @@ export const IndProd = () => {
               width: "441px",
             }}
           >
-            <img src={api.car} alt="car" height="100%" width="100%" />
+            <img src={vehicle?.photo} alt="car" height="100%" width="100%" />
           </Box>
         </Box>
         <Box
@@ -112,7 +161,7 @@ export const IndProd = () => {
               fontFamily: "Lexent, sans-serif",
             }}
           >
-            Mercedes Benz A 200 CGI ADVANCE SEDAN Mercedes Benz A 200
+            {vehicle?.name}
           </Typography>
           <Box
             sx={{
@@ -142,18 +191,19 @@ export const IndProd = () => {
                     fontFamily: "Inter",
                   }}
                 >
-                  {api.year}
+                  {vehicle?.year}
                 </Typography>
               </Box>
               <Box
                 sx={{
                   backgroundColor: "#EDEAFD",
-                  width: "51px",
+                  minWidth: "51px",
                   height: "32px",
                   borderRadius: "4px",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
+                  p: "0px 5px",
                 }}
               >
                 <Typography
@@ -163,7 +213,7 @@ export const IndProd = () => {
                     fontFamily: "Inter",
                   }}
                 >
-                  {api.km} KM
+                  {vehicle?.km} KM
                 </Typography>
               </Box>
             </Box>
@@ -174,7 +224,7 @@ export const IndProd = () => {
                 fontWeight: "500",
               }}
             >
-              {api.price.toLocaleString("pt-BR", {
+              {vehicle?.price.toLocaleString("pt-BR", {
                 style: "currency",
                 currency: "BRL",
               })}
@@ -219,7 +269,7 @@ export const IndProd = () => {
               color: "#495057",
             }}
           >
-            {api.description}
+            {vehicle?.description}
           </Typography>
         </Box>
         <Box
@@ -249,8 +299,9 @@ export const IndProd = () => {
           </Typography>
           <Box>
             {comments &&
-              comments.map((com) => (
+              comments.map((com, index) => (
                 <CommentCard
+                  key={index}
                   first_name={com.first_name}
                   last_name={com.last_name}
                   comment_text={com.comment_text}
@@ -282,7 +333,10 @@ export const IndProd = () => {
             }}
           >
             <Avatar>
-              {user.first_name.substring(0, 1) + user.last_name.substring(0, 1)}
+              {`${vehicle?.user.first_name.substring(
+                0,
+                1
+              )}${vehicle?.user.last_name.substring(0, 1)}`}{" "}
             </Avatar>
             <Typography
               sx={{
@@ -291,7 +345,7 @@ export const IndProd = () => {
                 fontFamily: "Inter",
                 color: "#212529",
               }}
-            >{`${user.first_name} ${user.last_name}`}</Typography>
+            >{`${vehicle?.user.first_name} ${vehicle?.user.last_name} USER FROM AUTH`}</Typography>
           </Box>
           <TextField
             id="outlined-textarea"
@@ -452,8 +506,8 @@ export const IndProd = () => {
               borderRadius: "4px",
             }}
           >
-            {api.photos &&
-              api.photos.map((photo) => (
+            {vehicle?.gallery && (
+              <Box>
                 <Box
                   sx={{
                     width: { xs: "90px", md: "108px" },
@@ -464,9 +518,25 @@ export const IndProd = () => {
                     mt: "10px",
                   }}
                 >
-                  <img src={photo} alt="photo_car" width="100%" />
+                  <img src={vehicle.photo} alt="photo_car" width="100%" />
                 </Box>
-              ))}
+                {vehicle?.gallery.map((gallery, index) => (
+                  <Box
+                    key={index}
+                    sx={{
+                      width: { xs: "90px", md: "108px" },
+                      heigh: { xs: "90px", md: "108px" },
+                      backgroundColor: "#E9ECEF",
+                      display: "flex",
+                      alignItems: "center",
+                      mt: "10px",
+                    }}
+                  >
+                    <img src={gallery.photo} alt="photo_car" width="100%" />
+                  </Box>
+                ))}
+              </Box>
+            )}
           </Box>
         </Box>
         <Box
@@ -493,7 +563,10 @@ export const IndProd = () => {
               backgroundColor: "#4529E6",
             }}
           >
-            {user.first_name.substring(0, 1) + user.last_name.substring(0, 1)}
+            {`${vehicle?.user.first_name.substring(
+              0,
+              1
+            )}${vehicle?.user.last_name.substring(0, 1)}`}
           </Avatar>
           <Typography
             sx={{
@@ -502,7 +575,7 @@ export const IndProd = () => {
               fontFamily: "Lexent, sans-serif",
               color: "#212529",
             }}
-          >{`${user.first_name} ${user.last_name}`}</Typography>
+          >{`${vehicle?.user.first_name} ${vehicle?.user.last_name}`}</Typography>
           <Typography
             sx={{
               fontFamily: "Inter",
@@ -512,7 +585,7 @@ export const IndProd = () => {
               textAlign: "center",
             }}
           >
-            {api.description}
+            Vendedor
           </Typography>
           <Button
             sx={{

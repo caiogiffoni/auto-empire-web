@@ -35,7 +35,7 @@ export const CommentCard = ({
             color: "#212529",
           }}
         >{`${first_name} ${last_name}`}</Typography>
-        <p>colocar aqui o tempo moment npm</p>
+        <p>Há 3 minutos</p>
       </Box>
       <Typography
         sx={{

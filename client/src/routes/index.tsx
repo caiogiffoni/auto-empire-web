@@ -4,7 +4,7 @@ import { IndProd } from "../pages/individualProduct";
 export const Routes = () => {
   return (
     <Switch>
-      <Route exact path="/product">
+      <Route path="/product/:vehicleId">
         <IndProd />
       </Route>
     </Switch>
