@@ -1,6 +1,6 @@
+import { Express } from "express";
+import vehicleRoutes from "./Vehicle/vehicle.routes";
 
-    import { Express } from 'express'
-    
-    export const appRoutes = (app: Express) => {
-    
-    }    
+export const appRoutes = (app: Express) => {
+  app.use("/vehicle", vehicleRoutes);
+};
