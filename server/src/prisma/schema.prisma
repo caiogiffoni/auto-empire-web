@@ -37,6 +37,7 @@ model Vehicle {
   updatedAt     DateTime  @updatedAt
   is_active     Boolean
   user_id       String
+  type          String?
   gallery       Gallery[]
   comments      Comment[]
   bid           Bid[]

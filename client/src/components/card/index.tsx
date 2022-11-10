@@ -1,22 +1,22 @@
 import { Avatar, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
-import image from "../../assets/car.png";
+import { useCallback, useEffect, useState } from "react";
+import { api } from "../../services";
 
-// apenas para exemplificar resposta api
-const api = {
-  title:
-    "Product title stays here - max 1 line Product title stays here - maximum1 line",
-  image,
-  description:
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  firstName: "Samuel",
-  lastName: "Leão",
-  km: 0,
-  year: 2019,
-  price: 13585.85,
-};
 
-export const CardAuto = () => {
+export const CardAuto = (item: any) => {
+    const [user, setUser] = useState([])
+
+    const displayUsers = useCallback( () => {
+        api.get(`/users`)
+        .then((response) => setUser(response.data))
+        .catch((err) => console.log(err))
+    }, [])
+
+    useEffect(() => {
+        displayUsers()
+    }, [])
+
   return (
     <Box
       sx={{
@@ -33,7 +33,7 @@ export const CardAuto = () => {
           justifyContent: "center",
         }}
       >
-        <img src={api.image} alt="car" />
+        <img src={item.item.photo} alt="car" width={257} />
       </Box>
       <Typography
         sx={{
@@ -43,7 +43,7 @@ export const CardAuto = () => {
           mt: "15px",
         }}
       >
-        {api.title.substring(0, 41)}
+        {item.item.title}
       </Typography>
       <Typography
         sx={{
@@ -54,7 +54,7 @@ export const CardAuto = () => {
           mt: "10px",
         }}
       >
-        {`${api.description.substring(0, 80)} ...`}
+        {`${item.item.description} ...`}
       </Typography>
       <Box
         sx={{
@@ -65,7 +65,7 @@ export const CardAuto = () => {
         }}
       >
         <Avatar alt="Samuel Leão" sx={{ bgcolor: "#4529E6" }}>
-          SL
+          {}
         </Avatar>
         <Typography
           sx={{
@@ -77,7 +77,13 @@ export const CardAuto = () => {
             ml: "12px",
           }}
         >
-          {`${api.firstName} ${api.lastName}`}
+          {user.map((profile: any) => {
+            if (profile.id === item.item.user_id) {
+                return profile.first_name + ' ' + profile.last_name
+            } 
+
+            return ''
+          })}
         </Typography>
       </Box>
       <Box
@@ -98,7 +104,7 @@ export const CardAuto = () => {
           <Box
             sx={{
               backgroundColor: "#EDEAFD",
-              width: "51px",
+              width: "80px",
               height: "32px",
               borderRadius: "4px",
               display: "flex",
@@ -107,9 +113,9 @@ export const CardAuto = () => {
             }}
           >
             <Typography
-              sx={{ color: "#4529E6", fontSize: "14px", fontFamily: "Inter" }}
+              sx={{ color: "#4529E6", fontSize: "12px", fontFamily: "Inter", textAlign: "center"}}
             >
-              {api.km} KM
+              {item.item.km} KM
             </Typography>
           </Box>
           <Box
@@ -124,20 +130,20 @@ export const CardAuto = () => {
             }}
           >
             <Typography
-              sx={{ color: "#4529E6", fontSize: "14px", fontFamily: "Inter" }}
+              sx={{ color: "#4529E6", fontSize: "12px", fontFamily: "Inter" }}
             >
-              {api.year}
+              {item.item.years}
             </Typography>
           </Box>
         </Box>
         <Typography
           sx={{
             fontFamily: "Lexent, sans-serif",
-            fontSize: "16px",
+            fontSize: "14px",
             fontWeight: "500",
           }}
         >
-          {api.price.toLocaleString("pt-BR", {
+          {item.item.price.toLocaleString("pt-BR", {
             style: "currency",
             currency: "BRL",
           })}

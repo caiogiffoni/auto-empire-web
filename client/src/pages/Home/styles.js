@@ -7,6 +7,29 @@ export const Container = styled.div`
         font-family: var(--itens-font);
     }
 
+    .divCarousel {
+        display: flex;
+    }
+
+
+    .swipe1, .swipe2 {
+        border: none;
+        background: transparent;
+
+        img {
+            width: 30px;
+            height: 50px;
+        }
+
+        @media screen and (max-width: 1024px) {
+            display: none;
+        }
+    }
+
+    .swipe2 {
+        right: 30px;
+    }
+    
 `
 
 export const Banner = styled.div`
@@ -15,8 +38,8 @@ export const Banner = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 400px;
     color: var(--brand4);
+    padding: 30px;
 
 
     h1, p {
@@ -57,13 +80,15 @@ export const DivButtons = styled.div`
     }
 `
 
-export const Carousel = styled.ul `
+export const Carousel = styled.div `
     margin: 40px 20px;
     padding: 0px;
     display: flex;
     width: 100vw;
     overflow: scroll;
     scroll-snap-type: x mandatory;
+    position: relative;
+    scroll-behavior: smooth;
 
     ::-webkit-scrollbar {
         width: 0px;

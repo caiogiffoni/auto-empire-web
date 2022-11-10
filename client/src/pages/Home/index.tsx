@@ -1,10 +1,30 @@
 import { ButtonStyle } from "../../components/button";
-import { CardAuto } from "../../components/card";
 import RegisterHeader from "../../components/registerHeader";
-import { Banner, Carousel, Container, DivButtons } from "./styles";
+import { Banner, Container, DivButtons } from "./styles";
+import { CarouselHome } from "../../components/carousel";
+import { useCallback, useEffect, useState } from "react";
+import { api } from "../../services";
 
 export const Home = () => {
+    const [data, setData] = useState([])
+    const [motorbike, setMotorbike] = useState([])
+    const [car, setCar] = useState([])
 
+    const displayProducts = useCallback( () => {
+        api.get(`/vehicle`)
+        .then((response) => setData(response.data))
+        .catch((err) => console.log(err))
+    }, [])
+
+    useEffect(() => {
+        displayProducts()
+        setCar(data.filter((item) => item['type'] === 'car'))
+        setMotorbike(data.filter((item) => item['type'] === 'motorbike')) 
+
+    }, [])
+
+    console.log(motorbike)
+    console.log(car)
 
   return (
     <Container>
@@ -18,27 +38,11 @@ export const Home = () => {
                 <ButtonStyle>Motos</ButtonStyle>
             </DivButtons>
         </Banner>
+
         <h2>Carros</h2>
-        <Carousel>
-            <CardAuto/>
-            <CardAuto/>
-            <CardAuto/>
-            <CardAuto/>
-            <CardAuto/>
-            <CardAuto/>
-        </Carousel>
-        <div>
-            <button></button>
-        </div>
+            <CarouselHome data={car}/>
         <h2>Motos</h2>
-        <Carousel>
-            <CardAuto/>
-            <CardAuto/>
-            <CardAuto/>
-            <CardAuto/>
-            <CardAuto/>
-            <CardAuto/>
-        </Carousel>
+            <CarouselHome data={motorbike}/>
     </Container>
   )
 };

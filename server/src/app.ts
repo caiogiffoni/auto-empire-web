@@ -7,9 +7,11 @@ import auctionRoute from "./routes/AuctionRoutes";
 import galleryRoute from "./routes/GalleryRoutes";
 import vehicleRoute from "./routes/VehicleRoutes";
 
+let cors = require('cors')
 const prisma = new PrismaClient();
-const app = express();
+export const app = express();
 
+app.use(cors())
 app.use(express.json());
 
 app.use("/users", userRoute);
